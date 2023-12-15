@@ -29,6 +29,7 @@ class SignupLogin(Home):
 
     @http.route('/web/signup', type='http', auth='public', website=True, sitemap=False)
     def web_auth_signup(self, *args, **kw):
+    	""" """
         qcontext = self.get_auth_signup_qcontext()
         qcontext["user_login_mob"] = kw.get('user_login_mob')
         qcontext["salutation"] = kw.get('salutation')
