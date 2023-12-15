@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.login_id</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name='name' position="before">
+                <label for="salutation_id"/>
+                <h1>
+                    <field name="salutation_id"/>
+                </h1>
+            </field>
+            <field name='function' position="after">
+                <field name="user_login_mob_id" string="電話號碼"/>
+            </field>
+            <xpath expr="//group[@name='sale']/field[@name='user_id']" position="after">
+                <field name="referral_by" string="Referral By"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <!--    Add fields in form view in product-->
+    <record id="company_inherit" model="ir.ui.view">
+        <field name="name">res.company.inherit.login.id</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name="favicon" position="after">
+                <group string="MSG91" name="msg91_details" groups="base.group_no_one">
+                    <field name="msg91_auth_key" password="True"/>
+                    <field name="msg91_template_id"/>
+                </group>
+            </field>
+        </field>
+    </record>
+</odoo>

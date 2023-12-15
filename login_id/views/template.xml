@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="website_address_inherited"
+              inherit_id="website_sale.address">
+        <xpath expr="//form[@class='checkout_autoformat']/div/div[1]" position="before">
+            <div t-attf-class="form-group #{error.get('salutation_id') and 'o_has_error' or ''} col-lg-12 div_name">
+                <label class="col-form-label" for="name">稱謂</label>
+                <select class="form-control" name="salutation_id"
+                        t-attf-class="form-control #{error.get('salutation_id') and 'is-invalid' or ''}"
+                        t-att-value="'salutation_id' in checkout and checkout['salutation_id']">
+                    <option value="mr" t-att-selected="[('salutation_id','=','mr')]">Mr.</option>
+                    <option value="mrs" t-att-selected="[('salutation_id','=','mrs')]">Mrs.</option>
+                    <option value="ms" t-att-selected="[('salutation_id','=','ms')]">Ms.</option>
+                    <option value="dr" t-att-selected="[('salutation_id','=','dr')]">Dr.</option>
+                </select>
+            </div>
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/div[2]" position="after">
+            <div t-attf-class="form-group #{error.get('user_login_mob_id') and 'o_has_error' or ''} col-lg-12 div_login_mob">
+                <label class="col-form-label" for="name">電話號碼</label>
+                <input type="text" name="user_login_mob_id"
+                       t-attf-class="form-control #{error.get('user_login_mob_id') and 'is-invalid' or ''}"
+                       t-att-value="'user_login_mob_id' in checkout and checkout['user_login_mob_id']"/>
+            </div>
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/div[5]" position="replace">
+            <div t-attf-class="mb-3 #{error.get('email') and 'o_has_error' or ''} col-lg-6" id="div_emails">
+<!--                <label t-attf-class="col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}" for="email">-->
+<!--                    Email-->
+<!--                </label>-->
+<!--                <input type="email" name="email"-->
+<!--                       t-attf-class="form-control #{error.get('email')}"-->
+<!--                       t-att-value="'email' in checkout and checkout['email']"/>-->
+                <label t-attf-class="col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}" for="email">
+                    Email
+                </label>
+                <input type="email" name="email"
+                       t-attf-class="form-control #{error.get('email')}"
+                       t-att-value="'email' in checkout and checkout['email']"/>
+            </div>
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/t[1]/t[2]/div[1]" position="replace">
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/div[11]"  position="replace">
+            <div t-attf-class="mb-3 #{error.get('city') and 'o_has_error' or ''} col-md-8 div_city">
+                <label class="col-form-label" for="city" style="display:none;">City</label>
+                <input type="text" name="city" value=" " style="display:none;"/>
+            </div>
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/t[4]/div[1]" position="replace">
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/div[13]/label[@class='col-form-label']"
+               position="replace">
+            <label class="col-form-label" for="country_id">國家/地區</label>
+        </xpath>
+        <xpath expr="//form[@class='checkout_autoformat']/div/div[13]/select"
+               position="replace">
+            <select id="country_id" name="country_id" t-attf-class="form-select #{error.get('country_id') and 'is-invalid' or ''}" t-att-mode="mode[1]">
+                <option value="94">香港</option>
+            </select>
+        </xpath>
+    </template>
+    <template id="website_contactus_inherited"
+              inherit_id="website.contactus">
+        <xpath expr="//form[@id='contactus_form']/div/div[4]" position="replace">
+        </xpath>
+    </template>
+    <!--    Hide VAT number    -->
+    <template id="website_vat_hide_inherited"
+              inherit_id="website_sale.address_b2b">
+        <xpath expr="//t[2]/div[2]" position="replace">
+            <div t-attf-class="form-group #{error.get('vat') and 'o_has_error' or ''} col-lg-6 div_vat mb-0">
+                <!--                    <label class="col-form-label font-weight-normal label-optional" for="vat">TIN / VAT </label>-->
+                <input type="hidden" name="vat" t-attf-class="form-control #{error.get('vat') and 'is-invalid' or ''}"
+                       t-att-value="'vat' in checkout and checkout['vat']"
+                       t-att-readonly="'1' if vat_warning else None"/>
+                <small t-if="vat_warning" class="form-text text-muted d-block d-lg-none">Changing VAT number is not
+                    allowed once document(s) have been issued for your account. Please contact us directly for this
+                    operation.
+                </small>
+            </div>
+        </xpath>
+    </template>
+</odoo>

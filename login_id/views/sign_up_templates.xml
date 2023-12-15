@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="sign_up_login_inherited"
+              inherit_id="auth_signup.fields">
+        <xpath expr="//div[hasclass('field-login')]" position="after">
+            <label for="login">您的電話號碼</label>
+            <div class="mb-3 field-login" style="display: flex; flex-direction: row;">
+                <div class="mb-1 field-login col-lg-3" id="div_code">
+                    <select class="div_code form-control form-control-sm" name="mob_country_code">
+                        <option t-attf-value="91">+91</option>
+                        <option t-attf-value="1">+1</option>
+                        <option t-attf-value="852">+852</option>
+                    </select>
+                </div>
+                <div class="mb-1 field-login col-lg-9" id="div_number">
+                    <input type="text" name="user_login_mob" t-att-value="user_login_mob" id="user_login_mob"
+                           class="form-control form-control-sm" autofocus="autofocus"
+                           autocapitalize="off" required="required"/>
+                </div>
+            </div>
+            <div class="form-group field-login-mobile">
+                <label for="login">稱謂</label>
+                <select class="form-control" name="salutation">
+                    <option t-attf-value="mr">Mr.</option>
+                    <option t-attf-value="mrs">Mrs.</option>
+                    <option t-attf-value="ms">Ms.</option>
+                    <option t-attf-value="dr">Dr.</option>
+                </select>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('field-confirm_password')]" position="after">
+            <div class="w-100"/>
+            <label for="sms_validate">SmS Validation</label>
+            <div class="mb-3 sms_validate" style="display: flex; flex-direction: row;">
+                <div class="generated_otp"/>
+                <div class="mb-1 sms_validate col-lg-6">
+                    <input type="text" name="sms_validation" t-att-value="sms_validate" id="sms_number"
+                           class="form-control" autofocus="autofocus" required="required"
+                           style="margin-right:5px;"/>
+                </div>
+                <button name="sent_otp" style="height: 35px; margin-left:5px; border-radius: 25px; background: #5097A4"
+                        class="sent_otp col-lg-6"
+                        role="button">Sent OTP
+                </button>
+            </div>
+            <div id="div-timer" style="margin-left: 50px;">
+                <p>Message will sent in </p>
+                <p id="idle_timer" style="margin-left: 40px;"/>
+            </div>
+            <div class="mb-3 field-login-referral " id="referral">
+                <label for="referral">Referral By</label>
+                <input type="text" name="referral_by" t-att-value="referral_by" id="referral_by"
+                       class="form-control form-control-sm" autofocus="autofocus"
+                       autocapitalize="off"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="login_id.verification_mail" name="Verify Email">
+        <t t-call="web.basic_layout">
+            <div class="email_verify">
+                <div class="container email_container">
+                    <div class="d-flex justify-content-center">
+                        <div class="mt-5">
+                            <form class="oe_email_verify_form" role="form" method="post" t-if="not message"
+                                  style="margin-top: 50%;" action="/web/send_verify_email">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <span>If you have not received your mail, please send request again</span>
+
+                                <div class="mb-6 email-verify" style="margin-top: 10px;">
+                                    <div>
+                                        <b>
+                                            <label for="login_mail">Your Email</label>
+                                        </b>
+                                    </div>
+                                    <input type="text" name="login_mail" t-att-value="login_mail" id="login_mail"
+                                           class="form-control form-control-sm" autofocus="autofocus"
+                                           autocapitalize="off" required="required"
+                                           t-att-readonly="'readonly' if only_passwords else None"/>
+                                </div>
+                                <div class="text-center verify_mail d-grid pt-6" style="margin-top:10px;">
+                                    <button type="submit" class="btn btn-secondary verify_email"
+                                            style="background-color: #5097A4">Send
+                                        Verification Mail
+                                    </button>
+                                </div>
+                                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm"
+                                   role="button">Already
+                                    verified email?
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,36 @@
+{
+    'name': 'Login ID',
+    'version': '16.0.0.1.16',
+    'summary': """  Login ID using instead of email """,
+    'description': """ Login ID using instead of email""",
+    'category': 'Website/Website',
+    'author': '',
+    'company': '',
+    'maintainer': '',
+    'depends': ['base', 'web', 'auth_oauth', 'portal', 'website_sale', 'website_event', 'sale', 'website'],
+    'website': '',
+    'data': [
+        'security/ir.model.access.csv',
+        'data/mail_template_data.xml',
+        'views/res_user_view.xml',
+        'views/res_partner_view.xml',
+        'views/sign_up_templates.xml',
+        'views/sign_in_templates.xml',
+        'views/event_registration_templates.xml',
+        'views/template.xml',
+        'views/portal_template.xml',
+        'views/product_pricelist_setting.xml',
+        'views/res_company_view.xml',
+        'wizard/portal_wizard_views.xml',
+        'views/veification_template.xml'
+    ],
+    'assets': {
+        'web.assets_frontend': [
+            'login_id/static/src/js/signup.js',
+        ],
+    },
+    'license': 'LGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}

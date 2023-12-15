@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="registration_attendee_details_inherited"
+              inherit_id="website_event.registration_attendee_details">
+        <xpath expr="//div[@class='modal-body border-bottom']" position="replace">
+            <div class="modal-body border-bottom">
+                <h5 class="mt-1 pb-2 border-bottom">票券 #<span t-out="counter"/> <small class="text-muted">- <span t-out="ticket['name']"/></small></h5>
+                <div class="row">
+                    <div class="col-lg my-2">
+                        <label>Name *</label>
+                        <input class="form-control" type="text" t-attf-name="#{counter}-name" required="This field is required" t-att-value="default_first_attendee.get('name', '') if counter == 1 else ''"/>
+                    </div>
+                    <div class="col-lg my-2">
+                        <label>Email *</label>
+                        <input class="form-control" type="email" t-attf-name="#{counter}-email" required="This field is required" t-att-value="default_first_attendee.get('email', '') if counter == 1 else ''"/>
+                    </div>
+                    <div class="col-lg my-2">
+                        <label>電話 *</label>
+                        <input class="form-control" type="tel" t-attf-name="#{counter}-phone" required="This field is required" t-att-value="default_first_attendee.get('phone', '') if counter == 1 else ''"/>
+                    </div>
+                    <input class="d-none" type="text" t-attf-name="#{counter}-event_ticket_id" t-attf-value="#{ticket['id']}"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

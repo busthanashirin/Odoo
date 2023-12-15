@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_template_inherited"
+              inherit_id="portal.portal_my_details_fields">
+        <xpath expr="//div[3]" position="after">
+            <div t-attf-class="mb-3 #{error.get('referral_by') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="referral_by">Referral By</label>
+                <t t-if="partner.referral_by">
+                    <p><t t-esc="partner.referral_by"/></p>
+                </t>
+                <t t-else="">
+                <input type="text" name="referral_by"
+                       t-attf-class="form-control #{error.get('referral_by') and 'is-invalid' or ''}"
+                       t-att-value="referral_by"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

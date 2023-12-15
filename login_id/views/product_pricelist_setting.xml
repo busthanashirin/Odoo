@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Form view for product Info  -->
+    <record id="product_pricelist_setting_form" model="ir.ui.view">
+        <field name="name">product.pricelist.setting.form</field>
+        <field name="model">product.pricelist.setting</field>
+        <field name="arch" type="xml">
+            <form string="Setting">
+                <sheet>
+                    <group>
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="product_pricelist"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    Tree view for product info-->
+    <record id="product_pricelist_setting_tree" model="ir.ui.view">
+        <field name="name">product.pricelist.setting.tree</field>
+        <field name="model">product.pricelist.setting</field>
+        <field name="arch" type="xml">
+            <tree string="會員產品價格表設置">
+                <field name="name"/>
+                <field name="product_pricelist"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    Action for Product info-->
+    <record id="product_pricelist_setting" model="ir.actions.act_window">
+        <field name="name">會員產品價格表設置</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.pricelist.setting</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu of Product info-->
+    <menuitem id="menu_product_pricelist_setting"
+              action="product_pricelist_setting"
+              parent="sale.product_menu_catalog"
+              sequence="15"/>
+</odoo>
